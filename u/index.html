@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+p {
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: block;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1 id="nama">Loading...</h1>
+  <p>Kontak Darurat</p>
+
+  <a id="call1" class="btn">Call 1</a>
+  <a id="call2" class="btn">Call 2</a>
+</div>
+
+<script>
+const data = {
+  "budi": {
+    nama: "Budi",
+    tel1: "628111111111",
+    tel2: "628222222222"
+  },
+  "andi": {
+    nama: "Andi",
+    tel1: "628333333333",
+    tel2: "628444444444"
+  }
+};
+
+// ambil id dari query
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+// render
+if (data[id]) {
+  document.getElementById("nama").innerText = data[id].nama;
+  document.getElementById("call1").href = "tel:+" + data[id].tel1;
+  document.getElementById("call2").href = "tel:+" + data[id].tel2;
+} else {
+  document.body.innerHTML = "<h1 style='color:white;text-align:center'>User tidak ditemukan</h1>";
+}
+</script>
+
+</body>
+</html>
