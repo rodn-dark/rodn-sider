@@ -67,6 +67,16 @@ p {
 </div>
 
 <script>
+  function getWhatsAppLink(number, name) {
+  const message = encodeURIComponent("Halo " + name);
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    return "https://wa.me/" + number + "?text=" + message;
+  } else {
+    return "https://web.whatsapp.com/send?phone=" + number + "&text=" + message;
+  }
+}
 const data = {
   "Rojo": {
     nama: "Rojo",
@@ -87,8 +97,8 @@ const id = params.get("id");
 // render
 if (data[id]) {
   document.getElementById("nama").innerText = data[id].nama;
-  document.getElementById("call1").href = "https://wa.me/" + data[id].tel1;
-  document.getElementById("call2").href = "https://wa.me/" + data[id].tel2;
+document.getElementById("call1").href = getWhatsAppLink(data[id].tel1, data[id].nama);
+document.getElementById("call2").href = getWhatsAppLink(data[id].tel2, data[id].nama);
 } else {
   document.body.innerHTML = "<h1 style='color:white;text-align:center'>User tidak ditemukan</h1>";
 }
