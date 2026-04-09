@@ -87,8 +87,8 @@ const id = params.get("id");
 // render
 if (data[id]) {
   document.getElementById("nama").innerText = data[id].nama;
-  document.getElementById("call1").href = "tel:+" + data[id].tel1;
-  document.getElementById("call2").href = "tel:+" + data[id].tel2;
+  document.getElementById("call1").href = "https://wa.me/" + data[id].tel1;
+  document.getElementById("call2").href = "https://wa.me/" + data[id].tel2;
 } else {
   document.body.innerHTML = "<h1 style='color:white;text-align:center'>User tidak ditemukan</h1>";
 }
