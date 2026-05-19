@@ -3,99 +3,308 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modern Background</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Lowongan Nganggur</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
     }
 
-    body {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      overflow: hidden;
-      color: white;
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at top left, #1e293b 0%, transparent 30%),
+        radial-gradient(circle at bottom right, #334155 0%, transparent 30%),
+        linear-gradient(135deg, #020617, #0f172a);
+      overflow-x:hidden;
+      color:white;
+      padding:30px 15px;
+      position:relative;
     }
 
-    .container {
-      text-align: center;
-      padding: 20px;
-      z-index: 2;
+    /* Background pattern */
+    .pattern{
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size:35px 35px;
+      animation:movePattern 15s linear infinite;
+      z-index:0;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1rem;
-      opacity: 0.8;
-    }
-
-    /* Decorative background pattern */
-    .pattern {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: movePattern 20s linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes movePattern {
-      from { transform: translate(0, 0); }
-      to { transform: translate(-40px, -40px); }
+    @keyframes movePattern{
+      from{
+        transform:translate(0,0);
+      }
+      to{
+        transform:translate(-35px,-35px);
+      }
     }
 
     /* Floating text */
-    .floating-text span {
-      position: absolute;
-      font-size: 0.8rem;
-      opacity: 0.05;
-      animation: float 20s linear infinite;
+    .floating-text span{
+      position:absolute;
+      color:white;
+      opacity:0.04;
+      font-size:0.9rem;
+      animation:float 20s linear infinite;
+      white-space:nowrap;
+      z-index:0;
     }
 
-    @keyframes float {
-      from { transform: translateY(100vh); }
-      to { transform: translateY(-10vh); }
+    @keyframes float{
+      from{
+        transform:translateY(110vh);
+      }
+      to{
+        transform:translateY(-20vh);
+      }
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.6rem;
+    /* Main card */
+    .card{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:850px;
+      background:rgba(15,23,42,0.85);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      border-radius:24px;
+      padding:40px;
+      box-shadow:
+        0 10px 40px rgba(0,0,0,0.5),
+        inset 0 0 0 1px rgba(255,255,255,0.03);
+    }
+
+    .badge{
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:999px;
+      background:rgba(239,68,68,0.15);
+      color:#fca5a5;
+      font-size:0.85rem;
+      margin-bottom:20px;
+      border:1px solid rgba(239,68,68,0.25);
+    }
+
+    h1{
+      font-size:3rem;
+      line-height:1.1;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+
+    .company{
+      color:#94a3b8;
+      font-size:1rem;
+      margin-bottom:30px;
+    }
+
+    .job-box{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:18px;
+      padding:20px;
+      margin-bottom:25px;
+    }
+
+    .job-title{
+      font-size:1.5rem;
+      font-weight:700;
+      margin-bottom:12px;
+      color:#f8fafc;
+    }
+
+    .info{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:15px;
+      margin-top:15px;
+    }
+
+    .info div{
+      background:rgba(255,255,255,0.03);
+      padding:14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .info span{
+      display:block;
+      font-size:0.8rem;
+      color:#94a3b8;
+      margin-bottom:5px;
+    }
+
+    h2{
+      font-size:1.1rem;
+      margin-top:30px;
+      margin-bottom:15px;
+      color:#f1f5f9;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    li{
+      margin-bottom:12px;
+      line-height:1.6;
+      position:relative;
+      padding-left:22px;
+      color:#cbd5e1;
+    }
+
+    li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      color:#38bdf8;
+      font-size:1.2rem;
+    }
+
+    .apply{
+      margin-top:35px;
+      background:linear-gradient(135deg,#0ea5e9,#2563eb);
+      padding:22px;
+      border-radius:18px;
+      line-height:1.7;
+      box-shadow:0 10px 30px rgba(37,99,235,0.25);
+    }
+
+    .apply strong{
+      display:block;
+      margin-bottom:10px;
+      font-size:1.1rem;
+    }
+
+    .footer{
+      margin-top:25px;
+      text-align:center;
+      font-size:0.9rem;
+      color:#94a3b8;
+      opacity:0.8;
+    }
+
+    @media(max-width:700px){
+
+      .card{
+        padding:25px;
       }
 
-      p {
-        font-size: 0.9rem;
+      h1{
+        font-size:2rem;
+      }
+
+      .job-title{
+        font-size:1.2rem;
+      }
+
+      li{
+        font-size:0.95rem;
       }
     }
   </style>
 </head>
+
 <body>
 
   <div class="pattern"></div>
 
-  <div class="container">
-    <h1>Halo 👋</h1>
-    <p>Selamat datang di halaman GitHub-ku</p>
+  <div class="floating-text">
+    <span style="left:8%; animation-delay:0s;">rebahan</span>
+    <span style="left:25%; animation-delay:4s;">scroll</span>
+    <span style="left:45%; animation-delay:8s;">overthinking</span>
+    <span style="left:65%; animation-delay:12s;">nganggur</span>
+    <span style="left:85%; animation-delay:16s;">deadline</span>
   </div>
 
-  <div class="floating-text">
-    <span style="left:10%; animation-delay:0s;">code</span>
-    <span style="left:30%; animation-delay:5s;">design</span>
-    <span style="left:50%; animation-delay:10s;">creative</span>
-    <span style="left:70%; animation-delay:15s;">build</span>
-    <span style="left:90%; animation-delay:20s;">future</span>
+  <div class="card">
+
+    <div class="badge">
+      LOWONGAN TERBARU 2026
+    </div>
+
+    <h1>LOWONGAN NGANGGUR</h1>
+
+    <div class="company">
+      PT. Mencari Cinta Sejati Tbk.
+    </div>
+
+    <div class="job-box">
+
+      <div class="job-title">
+        POSISI: REBAHAN SPECIALIST (FULL-TIME)
+      </div>
+
+      <div class="info">
+        <div>
+          <span>Penempatan</span>
+          Kamar Masing-Masing (WFH)
+        </div>
+
+        <div>
+          <span>Gaji</span>
+          Wawasan Baru Tentang Bermacam-macam Stress
+        </div>
+      </div>
+
+    </div>
+
+    <h2>DESKRIPSI PEKERJAAN</h2>
+
+    <ul>
+      <li>Menjaga kestabilan kasur & bantal.</li>
+      <li>Memantau pergerakan langit-langit kamar.</li>
+      <li>Scrolling media sosial tanpa tujuan.</li>
+      <li>Memikirkan "Mau jadi apa?" sambil tetap rebahan.</li>
+    </ul>
+
+    <h2>KUALIFIKASI UTAMA</h2>
+
+    <ul>
+      <li>Pendidikan: Minimal pernah sekolah (tidak diutamakan).</li>
+      <li>Pengalaman: Minimal 1 tahun nunda pekerjaan (Procrastinator Pro).</li>
+      <li>Tahan menatap HP 12 jam nonstop.</li>
+      <li>Tahan mental ditanya tetangga "Kerja di mana?"</li>
+    </ul>
+
+    <h2>FASILITAS & BENEFIT</h2>
+
+    <ul>
+      <li>Jam kerja fleksibel (bebas bangun kapan saja).</li>
+      <li>Bebas tekanan bos (tekanan dari diri sendiri).</li>
+      <li>Dress code: Kaos oblong pudar & celana kolor legendaris.</li>
+      <li>Tidak perlu laporan harian.</li>
+    </ul>
+
+    <div class="apply">
+      <strong>CARA MELAMAR</strong>
+
+      Tidak perlu kirim CV. Matikan alarm besok pagi,
+      tarik selimut, lanjutkan nganggur Anda!
+
+      <br><br>
+
+      <em>
+        *KUOTA TERBATAS! Khusus Anda yang benar-benar tidak niat kerja.*
+      </em>
+    </div>
+
+    <div class="footer">
+      © 2026 • Dibuat dengan rasa malas yang konsisten
+    </div>
+
   </div>
 
 </body>
